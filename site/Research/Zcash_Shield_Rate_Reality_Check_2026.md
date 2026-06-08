@@ -181,22 +181,33 @@ something about.
 
 ---
 
-## The mining reward problem, and the fix that already shipped
+## The mining reward problem, and why it isn't a technology problem
 
 In my sample, about 21% of all transactions were mining rewards, and every single one went
 to a transparent address. That's one guaranteed transparent transaction roughly every 75
 seconds, around the clock, built into how the network runs.
 
-That one fact caps the daily shield rate no matter what ordinary users do. It isn't apathy.
-It's a default setting in mining software.
+That one fact caps the daily shield rate no matter what ordinary users do. And here is the
+part that surprised me: it is not because the option doesn't exist.
 
-The good part is that the fix already shipped. Zebra v4.5.0, and now v5.0.0, let mining
-rewards go straight to a shielded address. The capability is there today. What's missing is
-the pools actually using it. If the big pools switched their payout addresses to shielded
-ones, about a fifth of all daily transactions would flip from transparent to private almost
-overnight, and regular users wouldn't have to change a thing.
+Miners have been able to receive their rewards at a shielded address for years. ZIP-213,
+"Shielded Coinbase," activated in the Heartwood upgrade in July 2020 and made it legal for
+coinbase rewards to be paid to a Sapling shielded address. Since the NU5 upgrade in May
+2022, Orchard addresses work too. As Electric Coin Company described it at the time, a
+mining pool can pay its miners through a shielded transaction. The option has been on the
+table for five years.
 
-That's the single biggest win available to the ecosystem right now, and one of the easiest.
+Five years later, mining rewards in my sample are still almost entirely transparent. The
+technology was never the blocker. The blocker is adoption: mining pools default to
+transparent payout addresses, and almost nobody has changed that default.
+
+This reframes the single biggest structural source of transparency on the network. It isn't
+a missing feature waiting to be built. It is a switch that already exists and mostly isn't
+flipped. If the large pools moved their payout addresses to shielded ones, about a fifth of
+all daily transactions would shift from transparent to private, and no ordinary user would
+have to do anything. That makes it, in my view, the highest-leverage and lowest-effort
+change available to the ecosystem, and the fact that it hasn't happened in five years is
+itself worth sitting with.
 
 ---
 
@@ -309,9 +320,10 @@ building.
 Plain advice, sorted by who can act and how much it would move things.
 
 **Mining pools, the highest impact and lowest effort.** Switch your payout address to a
-shielded (z) address. Zebra v5.0.0 supports it now. One large pool doing this could lift
-the daily shield rate by several points immediately. It's the most valuable single move
-anyone in the ecosystem can make today.
+shielded (z) address. This has been possible since 2020 (Sapling) and 2022 (Orchard), so
+there's no new tooling to wait for. One large pool doing this could lift the daily shield
+rate by several points immediately. It's the most valuable single move anyone in the
+ecosystem can make today.
 
 **Wallet developers, make shielded the default.** Not a toggle buried in settings. The
 default. When someone creates a wallet, hand them a shielded address first. The pool is fast
@@ -353,8 +365,8 @@ most common mistake in Zcash coverage right now.
 
 **"What's the highest leverage thing the ecosystem can do this quarter?"**
 Get mining pools onto shielded payouts. Mining rewards are about 21% of all transactions and
-fully transparent today, and Zebra v5.0.0 already supports paying them to a shielded
-address. A coordinated, public push aimed at the top three or four pools would move the
+fully transparent today, even though paying them to a shielded address has been possible
+since 2020. A coordinated, public push aimed at the top three or four pools would move the
 daily shield rate more than any wallet feature or campaign, and it costs the pools almost
 nothing.
 
@@ -390,8 +402,8 @@ Discord, and publish a brief write up. The first scheduled report is 1 July 2026
 set a recurring reminder so it doesn't slip.
 
 Four things I'll be watching: whether pools start paying rewards to shielded addresses, the
-daily shield rate trend now that NU6.2 and shielded mining are live, the direction of pool
-flow, and the count of fully private z→z transactions, which is the purest signal of all.
+daily shield rate trend now that NU6.2 is live, the direction of pool flow, and the count of
+fully private z→z transactions, which is the purest signal of all.
 
 The raw 500 transaction dataset behind this report is already in the repo:
 [research_data_500tx_verified.json](https://github.com/vancube2/zecledger/blob/master/research_data_500tx_verified.json).
